@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 17:39:50 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/19 17:39:50 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/21 17:47:40 by marvin            #+#    #+#             */
+/*   Updated: 2023/11/21 17:47:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(f)(void *), void (*del)(void *))
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}	
+	t_list	*new;
+
+	new = *ft_lstiter(lst, f);
+	
+
+}
