@@ -6,7 +6,7 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 21:34:40 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/18 03:16:30 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/12/12 22:33:01 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strdup(char *src)
 	char	*mall;
 
 	i = 0;
-	if (src == NULL)
-		return (NULL);
 	mall = (char *) malloc(ft_strlen(src) * sizeof(char) + 1);
 	if (!mall)
 		return (0);

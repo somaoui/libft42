@@ -1,72 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/22 18:29:42 by somaoui           #+#    #+#             */
+/*   Updated: 2023/12/13 04:30:57 by somaoui          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
-static size_t	count_words(char const *s, char c)
+static char	**ft_free(char **str)
 {
-	size_t	words;
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
 	{
-		if ((s[i] != c && s[i + 1] == c) || (s[i + 1] == '\0'))
-			words++;
+		free(str[i]);
 		i++;
 	}
-	return (words);
+	free(str);
+	return (NULL);
 }
 
-static void	fill_tab(char *new, char const *s, char c)
+static char	**malloc_split(const char *str, char c, size_t i, size_t j)
 {
-	size_t	i;
+	char	**splited;
 
-	i = 0;
-	while (s[i] && s[i] != c)
+	while (str[i])
 	{
-		new[i] = s[i];
-		i++;
-	}
-	new[i] = '\0';
-}
-
-static void	set_tab(char **tab, char const *s, char c)
-{
-	size_t	count;
-	size_t	i;
-	size_t	j;
-
-	j = 0;
-	i = 0;
-	while (s[i])
-	{
-		count = 0;
-		while (s[i + count] && s[i + count] != c)
-			count++;
-		if (count > 0)
-		{
-			tab[j] = malloc(sizeof(char) * (count + 1));
-			if (!tab[j])
-				return ;
-			fill_tab(tab[j], (s + i), c);
+		while (str[i] == c)
+			i++;
+		if (str[i] != c && str[i])
 			j++;
-			i = i + count;
-		}
-		else
+		while (str[i] != c && str[i])
 			i++;
 	}
-	tab[j] = 0;
+	splited = malloc(sizeof(char *) * (j + 1));
+	if (splited != NULL)
+		splited[j] = NULL;
+	return (splited);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_spliter(char **splited, const char *str, size_t i, char c)
 {
-	size_t	words;
-	char	**tab;
+	size_t	j;
+	size_t	k;
 
-	words = count_words(s, c);
-	tab = malloc(sizeof(char *) * (words + 1));
-	if (!tab)
-		return (NULL);
-	set_tab(tab, s, c);
-	return (tab);
+	j = 0;
+	k = 0;
+	while (str[k + i])
+	{
+		i += k;
+		k = 0;
+		while (str[k + i] == c)
+			i++;
+		while (str[k + i] != c && str[k + i])
+			k++;
+		if (str[k + i] == 0 && k == 0)
+			return (splited);
+		splited[j] = ft_substr(str, i, k);
+		if (splited[j] == NULL)
+			return (ft_free(splited));
+		j++;
+	}
+	return (splited);
 }
 
+char	**ft_split(const char *str, char c)
+{
+	char	**splited;
+
+	splited = malloc_split(str, c, 0, 0);
+	if (splited == NULL)
+		return (NULL);
+	splited = ft_spliter(splited, str, 0, c);
+	if (splited == NULL)
+		return (NULL);
+	return (splited);
+}

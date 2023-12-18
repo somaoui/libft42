@@ -6,15 +6,13 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 03:03:48 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/08 03:29:00 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/12/13 04:05:01 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+	if (c >= 97 && c <= 122)
+		c -= 32;
 	return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:24:32 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/08 04:55:45 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/12/13 05:00:32 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t	j;
 
 	i = 0;
-	j = 0;
-	if (to_find[j] == '\0')
-		return ((char *)str);
-	if (str == NULL && len == 0)
-		return (NULL);
+	if (ft_strlen(to_find) == 0)
+		return ((char *) str);
 	while (str[i] && i < len)
 	{
+		j = 0;
 		while (str[i + j] == to_find[j] && i + j < len)
 		{
 			j++;
@@ -33,5 +31,5 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

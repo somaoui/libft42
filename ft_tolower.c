@@ -6,11 +6,9 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 03:29:57 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/08 03:31:28 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/12/13 04:04:58 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_tolower(int c)
 {

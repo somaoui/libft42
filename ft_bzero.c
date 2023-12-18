@@ -6,7 +6,7 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:24:46 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/08 00:15:19 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/12/13 02:30:52 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	unsigned char *new;
+	size_t		i;
+	char		*str;
 
 	i = 0;
-	new = (unsigned char *)s;
+	str = (char *)s;
+	if (n == 0)
+		return ;
 	while (i < n)
 	{
-		new[i] = 0;
+		str[i] = '\0';
 		i++;
 	}
 }

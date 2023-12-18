@@ -6,13 +6,13 @@
 /*   By: somaoui <somaoui@student.42lyon.fr >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 01:26:45 by somaoui           #+#    #+#             */
-/*   Updated: 2023/11/18 00:49:24 by somaoui          ###   ########.fr       */
+/*   Updated: 2023/11/22 19:36:47 by somaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_size(long nb)
+static int	count_size(long nb)
 {
 	size_t	size;
 
